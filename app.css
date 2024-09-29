@@ -1,0 +1,98 @@
+body {
+  font-size: 24px;
+  font-family: Helvetica, sans-serif;
+  margin: 0;
+  margin-bottom: 2rem;
+  margin: 0;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  --time-blue: hsla(211, 70%, 50%, 0.6);
+  --time-blue-ghostly: hsla(211, 70%, 50%, 0.3);
+  --time-blue-dim: hsla(211, 70%, 50%, 0.1);
+  --ring: hsla(211, 70%, 50%, 0.95);
+  --diagnostic-line: hsla(44, 70%, 50%, 0.959);
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+#status-message {
+  background-color: hsla(56.2, 100%, 50%, 0.8);
+  margin: 1rem;
+  padding: 1rem;
+  text-shadow: none;
+  max-width: 80em;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border-width: 2px;
+  border-color: #444;
+  border-style: solid;
+  background-color: #fff;
+  min-width: 44px;
+}
+
+.outer-container {
+  display: flex;
+}
+
+a:link {
+  color: #222;
+  font-weight: 700;
+}
+
+a:visited {
+  color: #ddd;
+}
+
+#version-info {
+  position: absolute;
+  right: 1.5em;
+  top: 1.5em;
+  font-size: 0.5em;
+  color: #666;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 1s;
+  display: none;
+}
+
+#board {
+  border: 1px solid var(--time-blue);
+  background-color: #100410;
+}
+
+line {
+  stroke: var(--diagnostic-line);
+  stroke-width: 2;
+}
+
+#box {
+  fill: transparent;
+  stroke: var(--ring);
+  stroke-width: 2;
+}
+
+.text {
+  font-family: Roboto, Sans, sans-serif;
+  fill: #fff;
+}
+
+@media all and (max-height: 568px) {
+  body {
+    font-size: 18px;
+  }
+}

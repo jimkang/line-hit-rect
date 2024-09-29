@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>line-rect-hit demo</title>
+  </head>
+  <body>
+    <div id="status-message" class="hidden"></div>
+    <div id="version-info"></div>
+
+    <h1>line-rect-hit demo</h1>
+
+    <svg id="board" width="640" height="640">
+      <rect id="box"></rect>
+      <line id="line"></line>
+    </svg>
+
+    <div>Choose which shape's extents you will change when you click the board above:</div>
+    <fieldset>
+      <input type="radio" id="draw-box" name="drawing-type" value="box" checked />
+      <label for="draw-box">Box</label>
+      <input type="radio" id="draw-line" name="drawing-type" value="line" />
+      <label for="draw-line">Line</label>
+    </fieldset>
+
+    <script type="module" src="demo.js"></script>
+  </body>
+</html>
