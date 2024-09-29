@@ -2,12 +2,14 @@ import { version } from './package.json';
 import './app.css';
 import { select, selectAll, pointer } from 'd3-selection';
 import { getVectorMagnitude, subtractPairs } from 'basic-2d-math';
+import { lineHitRect } from './line-hit-rect';
 
 var drawingType = 'box';
 var boardSel = select('#board');
 var boxSel = select('#box');
 var lineSel = select('#line');
 var drawTypeGroupSel = selectAll('input[name="drawing-type"]');
+var answerSel = select('#answer');
 
 var boxRect = { left: 64, top: 128, right: 300, bottom: 250 };
 var linePoints = { pt1: [540, 48], pt2: [100, 500] };
@@ -30,6 +32,8 @@ function onBoardClick(e) {
   } else if (drawingType === 'line') {
     adjustLineByPoint(point);
   }
+
+  renderAnswer(lineHitRect({ line: linePoints, rect: boxRect }));
 }
 
 function onDrawingTypeGroupChange() {
@@ -82,6 +86,10 @@ function renderLine({ pt1, pt2 }) {
     .attr('y1', pt1[1])
     .attr('x2', pt2[0])
     .attr('y2', pt2[1]);
+}
+
+function renderAnswer(isHitting) {
+  answerSel.text(isHitting ? 'Yes' : 'No');
 }
 
 function reportTopLevelError(event) {
