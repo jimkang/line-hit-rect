@@ -9,8 +9,8 @@ var boxSel = select('#box');
 var lineSel = select('#line');
 var drawTypeGroupSel = selectAll('input[name="drawing-type"]');
 
-var boxRect = { left: 0, top: 0, right: 0, bottom: 0 };
-var linePoints = { pt1: [0, 0], pt2: [0, 0] };
+var boxRect = { left: 64, top: 128, right: 300, bottom: 250 };
+var linePoints = { pt1: [540, 48], pt2: [100, 500] };
 
 (async function go() {
   window.addEventListener('error', reportTopLevelError);
@@ -18,6 +18,9 @@ var linePoints = { pt1: [0, 0], pt2: [0, 0] };
 
   boardSel.on('click', onBoardClick);
   drawTypeGroupSel.on('change', onDrawingTypeGroupChange);
+
+  renderBox(boxRect);
+  renderLine(linePoints);
 })();
 
 function onBoardClick(e) {
