@@ -29,6 +29,28 @@ export function lineHitRect({ line, rect }) {
     return true;
   }
 
+  // To check hits to the top and bottom, we rotate and pretend y is x and x is y.
+  const rotatedM = 1 / m;
+  const rotatedB = getIntercept(rotatedM, line.pt1[1], line.pt1[0]);
+  console.log('rotatedB', rotatedB);
+
+  if (
+    isInBounds(calcLineY(rotatedM, rect.top, rotatedB), rect.left, rect.right)
+  ) {
+    // The line hits the top line of the rect.
+    return true;
+  }
+  if (
+    isInBounds(
+      calcLineY(rotatedM, rect.bottom, rotatedB),
+      rect.left,
+      rect.right
+    )
+  ) {
+    // The line hits the bottom line of the rect.
+    return true;
+  }
+
   return false;
 
   function pointIsInsideRect(pt) {
