@@ -10,7 +10,7 @@
 //  right: number;
 //  bottom: number;
 // }
-export function lineHitRect({ line, rect }) {
+export function lineRectHit({ line, rect }) {
   if ([line.pt1, line.pt2].some(pointIsInsideRect)) {
     return true;
   }
