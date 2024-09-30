@@ -2,7 +2,7 @@ import { version } from './package.json';
 import './app.css';
 import { select, pointer } from 'd3-selection';
 import { getVectorMagnitude, subtractPairs } from 'basic-2d-math';
-import { lineHitRect } from './line-hit-rect';
+import { lineHitRect } from './line-rect-hit';
 
 var boardSel = select('#board');
 var boxSel = select('#box');
