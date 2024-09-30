@@ -16,9 +16,7 @@ export function lineHitRect({ line, rect }) {
   }
 
   const m = getSlope(line);
-  console.log('m', m);
   const b = getIntercept(m, line.pt1[0], line.pt1[1]);
-  console.log('b', b);
 
   if (isInBounds(calcLineY(m, rect.left, b), rect.top, rect.bottom)) {
     // The line hits the left side of the rect.
@@ -32,7 +30,6 @@ export function lineHitRect({ line, rect }) {
   // To check hits to the top and bottom, we rotate and pretend y is x and x is y.
   const rotatedM = 1 / m;
   const rotatedB = getIntercept(rotatedM, line.pt1[1], line.pt1[0]);
-  console.log('rotatedB', rotatedB);
 
   if (
     isInBounds(calcLineY(rotatedM, rect.top, rotatedB), rect.left, rect.right)
