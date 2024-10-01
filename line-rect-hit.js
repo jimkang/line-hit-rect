@@ -10,9 +10,27 @@
 //  right: number;
 //  bottom: number;
 // }
+//
+// Remember: In SVG, +y is down, so the bottom has the higher number than the top.
 export function lineRectHit({ line, rect }) {
   if ([line.pt1, line.pt2].some(pointIsInsideRect)) {
     return true;
+  }
+  // If the leftmost point is to the right of the right side of the rect, they can't hit.
+  if (Math.min(line.pt1[0], line.pt2[0]) > rect.right) {
+    return false;
+  }
+  // If the rightmost point is to the left of the left side of the rect, they can't hit.
+  if (Math.max(line.pt1[0], line.pt2[0]) < rect.left) {
+    return false;
+  }
+  // If the topmost point is under the bottom side of the rect, they can't hit.
+  if (Math.min(line.pt1[1], line.pt2[1]) > rect.bottom) {
+    return false;
+  }
+  // If the bottommost point is above the side bottom of the rect, they can't hit.
+  if (Math.max(line.pt1[1], line.pt2[1]) < rect.top) {
+    return false;
   }
 
   const m = getSlope(line);
